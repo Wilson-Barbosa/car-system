@@ -29,7 +29,8 @@
             <td>{{car.price | currency}}</td>
             <td>{{car.year}}</td>
             <td>
-                <button class="btn btn-danger" (click)="deleteCar(car)" >Delete</button>
+                <button class="btn btn-danger me-2" (click)="deleteCar(car)" >Delete</button>
+                <button class="btn btn-warning" (click)="updateCar(car)">Update</button>
             </td>
           </tr>
         </tbody>

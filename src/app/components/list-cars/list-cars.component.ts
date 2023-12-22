@@ -8,6 +8,11 @@ import { Car } from 'src/app/models/Car';
 })
 export class ListCarsComponent {
 
+    // Attribute to define if a method of editing is being called
+    public isEdition: boolean = false;
+
+
+
     // Storage array containing each car's information
     // It will be displayed on the screen
     public carListing: Car[] = [
@@ -32,14 +37,23 @@ export class ListCarsComponent {
     public car: Car = {} as Car;
 
 
-    // Method that renders a new car to the table
+    // Method that saves and renders a new car to the table
     public saveCar(): void {
-        // Adding the proper Id for the new car
-        this.car.id = this.carListing.length + 1;
-        // Pushing it to the array
-        this.carListing.push(this.car);
-        // Reseting the car object (clears the field)
-        this.car = {} as Car;
+        if (this.isEdition) {
+
+            // The car is updated automatically (it's a two-way data biding)
+            this.car = {} as Car;
+
+            // Reseting the edition attribute to false again
+            this.isEdition = false;
+        } else {
+            // Adding the proper Id for the new car
+            this.car.id = this.carListing.length + 1;
+            // Pushing it to the array
+            this.carListing.push(this.car);
+            // Reseting the car object (clears the field)
+            this.car = {} as Car;
+        }
     }
 
 
@@ -51,9 +65,17 @@ export class ListCarsComponent {
 
         // Now to ajust the IDs on the table
         // Without this the splice method won't work properly on the last item on the table
-        for(let i = 0; i < this.carListing.length; i++){
+        for (let i = 0; i < this.carListing.length; i++) {
             this.carListing[i].id = i + 1;
         }
 
     }
+
+
+    // Method that uptades information of a car
+    public updateCar(car: Car): void {
+        this.car = car;
+        this.isEdition = true;
+    }
+
 }
