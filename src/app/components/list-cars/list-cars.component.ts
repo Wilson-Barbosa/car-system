@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Car } from 'src/app/models/Car';
 
 @Component({
-  selector: 'app-list-cars',
-  templateUrl: './list-cars.component.html',
-  styleUrls: ['./list-cars.component.css']
+    selector: 'app-list-cars',
+    templateUrl: './list-cars.component.html',
+    styleUrls: ['./list-cars.component.css']
 })
 export class ListCarsComponent {
 
@@ -32,7 +32,8 @@ export class ListCarsComponent {
     public car: Car = {} as Car;
 
 
-    public saveCar(){
+    // Method that renders a new car to the table
+    public saveCar(): void {
         // Adding the proper Id for the new car
         this.car.id = this.carListing.length + 1;
         // Pushing it to the array
@@ -41,4 +42,18 @@ export class ListCarsComponent {
         this.car = {} as Car;
     }
 
+
+    // Method that deletes a car from the table
+    public deleteCar(car: Car): void {
+
+        let index = car.id - 1;             // The id from the car is stored within this variable
+        this.carListing.splice(index, 1);   // Removes one item from the appointed index
+
+        // Now to ajust the IDs on the table
+        // Without this the splice method won't work properly on the last item on the table
+        for(let i = 0; i < this.carListing.length; i++){
+            this.carListing[i].id = i + 1;
+        }
+
+    }
 }
