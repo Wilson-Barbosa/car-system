@@ -1,0 +1,33 @@
+
+<!-- Register-car is a child of the list-car component -->
+<app-register-car></app-register-car>
+
+<div class="container">
+    <hr>
+</div>
+
+<div class="container">
+
+    <h3 class="py-2">List of cars</h3>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Model</th>
+            <th scope="col">Manufacturer</th>
+            <th scope="col">Price</th>
+            <th scope="col">Year</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let car of carListing">
+            <td>{{car.id}}</td>
+            <td>{{car.model}}</td>
+            <td>{{car.manufacturer}}</td>
+            <td>{{car.price}}</td>
+            <td>{{car.year}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>

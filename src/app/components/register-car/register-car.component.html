@@ -1,25 +1,27 @@
-<div class="container">
+<form  class="container" #registerForm="ngForm">
 
-    <h3>List of cars</h3>
+    <h3 class="py-2">Register a new Car</h3>
 
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">id</th>
-            <th scope="col">Model</th>
-            <th scope="col">Manufacturer</th>
-            <th scope="col">Price</th>
-            <th scope="col">Year</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let car of carListing">
-            <td>{{car.id}}</td>
-            <td>{{car.model}}</td>
-            <td>{{car.manufacturer}}</td>
-            <td>{{car.price}}</td>
-            <td>{{car.year}}</td>
-          </tr>
-        </tbody>
-      </table>
-</div>
+    <div class="col-12 my-3">
+        <label for="inputModel" class="form-label">Model:</label>
+        <input type="text" class="form-control" id="inputModel" required>
+    </div>
+    <div class="col-12 my-3">
+        <label for="inputManufacturer" class="form-label">Manufacturer:</label>
+        <input type="text" class="form-control" id="inputManufacturer" required>
+    </div>
+
+    <div class="row my-3">
+        <div class="col-6">
+            <label for="inputPrice" class="form-label">Price:</label>
+            <input type="number" class="form-control" id="inputPrice" required>
+        </div>
+        <div class="col-6">
+            <label for="inputYear" class="form-label">Year:</label>
+            <input type="number" class="form-control" id="inputYear" required>
+        </div>
+    </div>
+
+    <button class="btn btn-success my-2" [disabled]="registerForm.invalid">Register</button>
+
+</form>
