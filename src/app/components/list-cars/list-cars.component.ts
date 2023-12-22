@@ -7,7 +7,7 @@ import { Car } from 'src/app/models/Car';
   styleUrls: ['./list-cars.component.css']
 })
 export class ListCarsComponent {
-    
+
     // Storage array containing each car's information
     // It will be displayed on the screen
     public carListing: Car[] = [
@@ -26,4 +26,19 @@ export class ListCarsComponent {
             year: 2021
         }
     ];
+
+
+    // This attribute will receive the information from the form-component
+    public car: Car = {} as Car;
+
+
+    public saveCar(){
+        // Adding the proper Id for the new car
+        this.car.id = this.carListing.length + 1;
+        // Pushing it to the array
+        this.carListing.push(this.car);
+        // Reseting the car object (clears the field)
+        this.car = {} as Car;
+    }
+
 }

@@ -1,6 +1,6 @@
 
 <!-- Register-car is a child of the list-car component -->
-<app-register-car></app-register-car>
+<app-register-car [car]="car" (registerCarEmitter)="saveCar()" ></app-register-car>
 
 <div class="container">
     <hr>

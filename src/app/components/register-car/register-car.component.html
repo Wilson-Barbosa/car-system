@@ -1,27 +1,61 @@
-<form  class="container" #registerForm="ngForm">
-
+<form class="container" #registerForm="ngForm">
     <h3 class="py-2">Register a new Car</h3>
 
     <div class="col-12 my-3">
         <label for="inputModel" class="form-label">Model:</label>
-        <input type="text" class="form-control" id="inputModel" required>
+        <input
+            [(ngModel)]="car.model"
+            name="model"
+            type="text"
+            class="form-control"
+            id="inputModel"
+            required
+            minlength="4"
+        />
     </div>
     <div class="col-12 my-3">
         <label for="inputManufacturer" class="form-label">Manufacturer:</label>
-        <input type="text" class="form-control" id="inputManufacturer" required>
+        <input
+            [(ngModel)]="car.manufacturer"
+            name="manufacturer"
+            type="text"
+            class="form-control"
+            id="inputManufacturer"
+            required
+            minlength="2"
+        />
     </div>
 
     <div class="row my-3">
         <div class="col-6">
             <label for="inputPrice" class="form-label">Price:</label>
-            <input type="number" class="form-control" id="inputPrice" required>
+            <input
+                [(ngModel)]="car.price"
+                name="price"
+                type="number"
+                class="form-control"
+                id="inputPrice"
+                required
+            />
         </div>
         <div class="col-6">
             <label for="inputYear" class="form-label">Year:</label>
-            <input type="number" class="form-control" id="inputYear" required>
+            <input
+                [(ngModel)]="car.year"
+                name="year"
+                type="number"
+                class="form-control"
+                id="inputYear"
+                required
+            />
         </div>
     </div>
 
-    <button class="btn btn-success my-2" [disabled]="registerForm.invalid">Register</button>
-
+    <button
+        class="btn btn-success my-2"
+        (click)="saveCar()"
+        [disabled]="registerForm.invalid"
+    >
+        Register
+    </button>
 </form>
